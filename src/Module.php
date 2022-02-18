@@ -1,6 +1,6 @@
 <?php
 
-namespace diginova\content;
+namespace portalium\content;
 
 class Module extends \portalium\base\Module
 {
@@ -15,7 +15,7 @@ class Module extends \portalium\base\Module
     
     public static function moduleInit()
     {
-        self::registerTranslation('content','@diginova/content/messages',[
+        self::registerTranslation('content','@portalium/content/messages',[
             'content' => 'content.php',
         ]);
     }

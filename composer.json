@@ -1,5 +1,5 @@
 {
-	"name" : "diginova/portalium-content",
+	"name" : "portalium/portalium-content",
 	"description" : "Portalium content",
 	"type" : "yii2-extension",
 	"license": "MIT",
@@ -12,11 +12,11 @@
 		}
 	],
 	"support" : {
-		"issues" : "https://github.com/diginova/portalium-content/issues"
+		"issues" : "https://github.com/portalium/portalium-content/issues"
 	},
 	"autoload" : {
 		"psr-4" : {
-			"diginova\\content\\" : "src/"
+			"portalium\\content\\" : "src/"
 		}
 	}
 }
