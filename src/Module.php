@@ -4,6 +4,7 @@ namespace portalium\content;
 
 class Module extends \portalium\base\Module
 {
+    public static $tablePrefix = 'content_';
     public $apiRules = [
         [
             'class' => 'yii\rest\UrlRule',
@@ -12,10 +13,10 @@ class Module extends \portalium\base\Module
             ]
         ],
     ];
-    
+
     public static function moduleInit()
     {
-        self::registerTranslation('content','@portalium/content/messages',[
+        self::registerTranslation('content', '@portalium/content/messages', [
             'content' => 'content.php',
         ]);
     }

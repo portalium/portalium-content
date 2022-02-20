@@ -2,16 +2,16 @@
 
 namespace portalium\content\controllers\backend;
 
-use portalium\content\models\Content;
-use portalium\content\models\ContentSearch;
+use portalium\content\models\Category;
+use portalium\content\models\CategorySearch;
 use portalium\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use portalium\content\Module;
 /**
- * ContentController implements the CRUD actions for Content model.
+ * CategoryController implements the CRUD actions for Category model.
  */
-class DefaultController extends Controller
+class CategoryController extends Controller
 {
     /**
      * @inheritDoc
@@ -28,26 +28,26 @@ class DefaultController extends Controller
                     ],
                 ],
                 'access' => [
-                'class' => \yii\filters\AccessControl::className(),
-                'rules' => [
-                    [
-                        'allow' => true,
-                        'roles' => ['@'],
+                    'class' => \yii\filters\AccessControl::className(),
+                    'rules' => [
+                        [
+                            'allow' => true,
+                            'roles' => ['@'],
+                        ],
                     ],
                 ],
-            ],
             ]
         );
     }
 
     /**
-     * Lists all Content models.
+     * Lists all Category models.
      *
      * @return string
      */
     public function actionIndex()
     {
-        $searchModel = new ContentSearch();
+        $searchModel = new CategorySearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
 
         return $this->render('index', [
@@ -57,8 +57,8 @@ class DefaultController extends Controller
     }
 
     /**
-     * Displays a single Content model.
-     * @param int $id_content Id Content
+     * Displays a single Category model.
+     * @param int $id_category Id Category
      * @return string
      * @throws NotFoundHttpException if the model cannot be found
      */
@@ -70,17 +70,18 @@ class DefaultController extends Controller
     }
 
     /**
-     * Creates a new Content model.
+     * Creates a new Category model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return string|\yii\web\Response
      */
     public function actionCreate()
     {
-        $model = new Content();
+        $model = new Category();
 
         if ($this->request->isPost) {
+
             if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id' => $model->id_content]);
+                return $this->redirect(['view', 'id' => $model->id_category]);
             }
         } else {
             $model->loadDefaultValues();
@@ -92,9 +93,9 @@ class DefaultController extends Controller
     }
 
     /**
-     * Updates an existing Content model.
+     * Updates an existing Category model.
      * If update is successful, the browser will be redirected to the 'view' page.
-     * @param int $id_content Id Content
+     * @param int $id_category Id Category
      * @return string|\yii\web\Response
      * @throws NotFoundHttpException if the model cannot be found
      */
@@ -103,7 +104,7 @@ class DefaultController extends Controller
         $model = $this->findModel($id);
 
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id_content]);
+            return $this->redirect(['view', 'id' => $model->id_category]);
         }
 
         return $this->render('update', [
@@ -112,9 +113,9 @@ class DefaultController extends Controller
     }
 
     /**
-     * Deletes an existing Content model.
+     * Deletes an existing Category model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param int $id_content Id Content
+     * @param int $id_category Id Category
      * @return \yii\web\Response
      * @throws NotFoundHttpException if the model cannot be found
      */
@@ -126,15 +127,15 @@ class DefaultController extends Controller
     }
 
     /**
-     * Finds the Content model based on its primary key value.
+     * Finds the Category model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param int $id_content Id Content
-     * @return Content the loaded model
+     * @param int $id_category Id Category
+     * @return Category the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($id_content)
+    protected function findModel($id_category)
     {
-        if (($model = Content::findOne(['id_content' => $id_content])) !== null) {
+        if (($model = Category::findOne(['id_category' => $id_category])) !== null) {
             return $model;
         }
 
