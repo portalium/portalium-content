@@ -18,5 +18,8 @@
 		"psr-4" : {
 			"portalium\\content\\" : "src/"
 		}
+	},
+	"require" : {
+		"kartik-v/yii2-editors": "@dev"
 	}
 }
