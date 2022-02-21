@@ -10,7 +10,7 @@ use portalium\theme\widgets\Panel;
 /* @var $searchModel portalium\content\models\CategorySearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Module::t( 'Categories');
+$this->title = Module::t('Categories');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="category-index">
@@ -18,7 +18,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php Panel::begin([
         'title' => $this->title,
         'actions' => [
-            Html::a(Module::t( 'Create Category'), ['create'], ['class' => 'btn btn-success'])
+            Html::a(Module::t('Create Category'), ['create'], ['class' => 'btn btn-success'])
         ]
     ]) ?>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>

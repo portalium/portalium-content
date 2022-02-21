@@ -6,7 +6,7 @@ use portalium\theme\widgets\Panel;
 /* @var $this yii\web\View */
 /* @var $model portalium\content\models\Category */
 
-$this->title = Yii::t('app', 'Create Category');
+$this->title = Module::t('Create Category');
 $this->params['breadcrumbs'][] = ['label' => Module::t('Categories'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
