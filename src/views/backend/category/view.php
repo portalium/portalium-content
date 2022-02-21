@@ -8,7 +8,7 @@ use portalium\theme\widgets\Panel;
 /* @var $model portalium\content\models\Category */
 
 $this->title = $model->name;
-$this->params['breadcrumbs'][] = ['label' => Module::t( 'Categories'), 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => Module::t('Categories'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
@@ -16,8 +16,8 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php Panel::begin([
         'title' => $this->title,
         'actions' => [
-            Html::a(Module::t( 'Update'), ['update', 'id' => $model->id_category], ['class' => 'btn btn-primary']),
-            Html::a(Module::t( 'Delete'), ['delete', 'id' => $model->id_category], [
+            Html::a(Module::t('Update'), ['update', 'id' => $model->id_category], ['class' => 'btn btn-primary']),
+            Html::a(Module::t('Delete'), ['delete', 'id' => $model->id_category], [
                 'class' => 'btn btn-danger',
                 'data' => [
                     'confirm' => Module::t('Are you sure you want to delete this item?'),

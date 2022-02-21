@@ -10,9 +10,9 @@ use portalium\theme\widgets\Panel;
 $this->title = Module::t('Update Content: {name}', [
     'name' => $model->name,
 ]);
-$this->params['breadcrumbs'][] = ['label' => Module::t( 'Contents'), 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => Module::t('Contents'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->name, 'url' => ['view', 'id' => $model->id_content]];
-$this->params['breadcrumbs'][] = Module::t( 'Update');
+$this->params['breadcrumbs'][] = Module::t('Update');
 ?>
 <div class="content-update">
 

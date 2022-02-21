@@ -6,7 +6,7 @@ use portalium\theme\widgets\Panel;
 /* @var $this yii\web\View */
 /* @var $model portalium\content\models\Category */
 
-$this->title = Yii::t('app', 'Update Category: {name}', [
+$this->title = Module::t('Update Category: {name}', [
     'name' => $model->name,
 ]);
 $this->params['breadcrumbs'][] = ['label' => Module::t('Categories'), 'url' => ['index']];
