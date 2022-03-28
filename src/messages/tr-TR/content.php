@@ -19,4 +19,5 @@ return [
     'Date Created' => 'Oluşturma Tarihi',
     'Date Updated' => 'Güncelleme Tarihi',
     'Label' => 'Etiket',
+    'Content Management Module' => 'İçerik Yönetim Modülü',
 ];
