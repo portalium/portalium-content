@@ -17,7 +17,7 @@ class m220220_100631_content extends Migration
         $tableOptions = 'ENGINE=InnoDB';
 
         $this->createTable(
-            '{{%content}}',
+            '{{%content_content}}',
             [
                 'id_content'=> $this->primaryKey(11),
                 'name'=> $this->string(255)->notNull(),
