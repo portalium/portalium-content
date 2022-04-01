@@ -1,0 +1,50 @@
+{
+	"folders": [
+		{
+			"path": "../../../../.."
+		},
+		{
+			"path": "../../../../diginova/portalium-career"
+		},
+		{
+			"path": "../../../../diginova/portalium-face"
+		},
+		{
+			"path": "../../../../diginova/portalium-form"
+		},
+		{
+			"path": "../../../../diginova/portalium-gebe"
+		},
+		{
+			"path": "../../../../diginova/portalium-media"
+		},
+		{
+			"path": "../../../../diginova/portalium-multimedia"
+		},
+		{
+			"path": "../../../../diginova/portalium-social"
+		},
+		{
+			"path": "../../../../diginova/portalium-task"
+		},
+		{
+			"path": "../.."
+		},
+		{
+			"path": "../../../portalium-core"
+		},
+		{
+			"path": "../../../portalium-menu"
+		},
+		{
+			"path": "../../../portalium-site"
+		},
+		{
+			"path": "../../../portalium-theme"
+		},
+		{
+			"path": "../../../portalium-user"
+		}
+	],
+	"settings": {}
+}
