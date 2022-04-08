@@ -47,6 +47,9 @@ class CategoryController extends Controller
      */
     public function actionIndex()
     {
+        if (!\Yii::$app->user->can('contentBackendCategoryIndex')) {
+            throw new \yii\web\ForbiddenHttpException(Module::t('You are not allowed to access this page.'));
+        }
         $searchModel = new CategorySearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
 
@@ -64,6 +67,9 @@ class CategoryController extends Controller
      */
     public function actionView($id)
     {
+        if (!\Yii::$app->user->can('contentBackendCategoryView')) {
+            throw new \yii\web\ForbiddenHttpException(Module::t('You are not allowed to access this page.'));
+        }
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
@@ -76,6 +82,9 @@ class CategoryController extends Controller
      */
     public function actionCreate()
     {
+        if (!\Yii::$app->user->can('contentBackendCategoryCreate')) {
+            throw new \yii\web\ForbiddenHttpException(Module::t('You are not allowed to access this page.'));
+        }
         $model = new Category();
 
         if ($this->request->isPost) {
@@ -101,6 +110,9 @@ class CategoryController extends Controller
      */
     public function actionUpdate($id)
     {
+        if (!\Yii::$app->user->can('contentBackendCategoryUpdate')) {
+            throw new \yii\web\ForbiddenHttpException(Module::t('You are not allowed to access this page.'));
+        }
         $model = $this->findModel($id);
 
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
@@ -121,6 +133,9 @@ class CategoryController extends Controller
      */
     public function actionDelete($id)
     {
+        if (!\Yii::$app->user->can('contentBackendCategoryDelete')) {
+            throw new \yii\web\ForbiddenHttpException(Module::t('You are not allowed to access this page.'));
+        }
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
