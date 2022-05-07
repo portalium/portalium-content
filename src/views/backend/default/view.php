@@ -31,13 +31,12 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'id_content',
             'name',
             'title:ntext',
-            'body:html',
-            'id_user',
-            'id_category',
-            'status',
+            [
+                'attribute' => 'status',
+                'value' => Content::getStatusList()['STATUS'][$model->status],
+            ],
             'date_create',
             'date_update',
         ],
