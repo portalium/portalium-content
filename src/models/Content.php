@@ -5,6 +5,7 @@ namespace portalium\content\models;
 use Yii;
 use yii\behaviors\TimestampBehavior;
 use portalium\content\Module;
+use yii\helpers\ArrayHelper;
 /**
  * This is the model class for table "{{%content}}".
  *
@@ -97,6 +98,12 @@ class Content extends \yii\db\ActiveRecord
                 self::STATUS['active'] => Module::t('Active')
             ]
         ];
+    }
+
+    public static function getContentList()
+    {
+        //return value and label
+        return ArrayHelper::map(self::find()->all(), 'id_content', 'title');
     }
 
     public function getCategory()
