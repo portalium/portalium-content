@@ -14,14 +14,14 @@
 	"support" : {
 		"issues" : "https://github.com/portalium/portalium-content/issues"
 	},
+	"require" : {
+		"kartik-v/yii2-editors": "@dev",
+		"portalium/portalium-user" : "*",
+		"portalium/portalium-site" : "*"
+	},
 	"autoload" : {
 		"psr-4" : {
 			"portalium\\content\\" : "src/"
 		}
-	},
-	"require" : {
-		"kartik-v/yii2-editors": "@dev",
-		"portalium/portalium-user" : "^0.0.1",
-		"portalium/portalium-site" : "^0.0.1"
 	}
 }
