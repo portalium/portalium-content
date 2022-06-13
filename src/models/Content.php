@@ -103,4 +103,5 @@ class Content extends \yii\db\ActiveRecord
     {
         return $this->hasMany(Category::class, ['id_category' => 'id_category']);
     }
+
 }

@@ -19,7 +19,7 @@ class m220220_100631_content extends Migration
         $this->createTable(
             '{{%content_content}}',
             [
-                'id_content'=> $this->primaryKey(11),
+                'id_content'=> $this->primaryKey(),
                 'name'=> $this->string(255)->notNull(),
                 'title'=> $this->text()->notNull(),
                 'body'=> $this->text()->null()->defaultValue(null),
