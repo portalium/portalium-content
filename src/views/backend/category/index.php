@@ -7,18 +7,18 @@ use yii\grid\GridView;
 use portalium\content\Module;
 use portalium\theme\widgets\Panel;
 /* @var $this yii\web\View */
-/* @var $searchModel portalium\content\models\ContentSearch */
+/* @var $searchModel portalium\content\models\CategorySearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Module::t('Contents');
+$this->title = Module::t('Categories');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="content-index">
+<div class="category-index">
 
     <?php Panel::begin([
-        'title' => Module::t('Contents'),
+        'title' => $this->title,
         'actions' => [
-            Html::a(Module::t('Create Content'), ['create'], ['class' => 'btn btn-success'])
+            Html::a(Module::t('Create Category'), ['create'], ['class' => 'btn btn-success'])
         ]
     ]) ?>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -28,17 +28,14 @@ $this->params['breadcrumbs'][] = $this->title;
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-
-            //'id_content',
-            'name',
-            'title:ntext',
-            //'id_user',
             //'id_category',
-            //'status',
-            //'date_create',
-            //'date_update',
+            'name',
+            'slug',
+            'date_create',
+            'date_update',
             ['class' => 'yii\grid\ActionColumn'],
         ],
-    ]); Panel::end()?>
+    ]); Panel::end() ?>
+
 
 </div>
