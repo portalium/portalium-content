@@ -1,7 +1,7 @@
 {
 	"name" : "portalium/portalium-content",
 	"description" : "Portalium content",
-	"type" : "yii2-extension",
+	"type" : "portalium-core",
 	"license": "MIT",
 	"homepage" : "https://diginova.com.tr",
 	"authors" : [
@@ -20,6 +20,8 @@
 		}
 	},
 	"require" : {
-		"kartik-v/yii2-editors": "@dev"
+		"kartik-v/yii2-editors": "@dev",
+		"portalium/portalium-user" : "^0.0.1",
+		"portalium/portalium-site" : "^0.0.1"
 	}
 }

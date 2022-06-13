@@ -47,6 +47,9 @@ class DefaultController extends Controller
      */
     public function actionIndex()
     {
+        if (!\Yii::$app->user->can('contentBackendDefaultIndex')) {
+            throw new \yii\web\ForbiddenHttpException(Module::t('You are not allowed to access this page.'));
+        }
         $searchModel = new ContentSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
 
@@ -64,6 +67,9 @@ class DefaultController extends Controller
      */
     public function actionView($id)
     {
+        if (!\Yii::$app->user->can('contentBackendDefaultView')) {
+            throw new \yii\web\ForbiddenHttpException(Module::t('You are not allowed to access this page.'));
+        }
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
@@ -76,6 +82,9 @@ class DefaultController extends Controller
      */
     public function actionCreate()
     {
+        if (!\Yii::$app->user->can('contentBackendDefaultCreate')) {
+            throw new \yii\web\ForbiddenHttpException(Module::t('You are not allowed to access this page.'));
+        }
         $model = new Content();
 
         if ($this->request->isPost) {
@@ -100,6 +109,9 @@ class DefaultController extends Controller
      */
     public function actionUpdate($id)
     {
+        if (!\Yii::$app->user->can('contentBackendDefaultUpdate')) {
+            throw new \yii\web\ForbiddenHttpException(Module::t('You are not allowed to access this page.'));
+        }
         $model = $this->findModel($id);
 
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
@@ -120,6 +132,9 @@ class DefaultController extends Controller
      */
     public function actionDelete($id)
     {
+        if (!\Yii::$app->user->can('contentBackendDafaultDelete')) {
+            throw new \yii\web\ForbiddenHttpException(Module::t('You are not allowed to access this page.'));
+        }
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);

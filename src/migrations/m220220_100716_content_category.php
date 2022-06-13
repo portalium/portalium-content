@@ -19,7 +19,7 @@ class m220220_100716_content_category extends Migration
         $this->createTable(
             '{{%content_category}}',
             [
-                'id_category'=> $this->integer(11)->notNull(),
+                'id_category'=> $this->primaryKey(),
                 'name'=> $this->string(255)->notNull(),
                 'slug'=> $this->string(255)->notNull(),
                 'date_create'=> $this->datetime()->notNull()->defaultExpression("CURRENT_TIMESTAMP"),
