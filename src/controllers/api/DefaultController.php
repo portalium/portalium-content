@@ -14,12 +14,14 @@ class DefaultController extends RestActiveController
     public function actions()
     {
         $actions = parent::actions();
-        unset($actions['index']);
+        $actions['index']['dataFilter'] = [
+            'class' => \yii\data\ActiveDataFilter::class,
+            'searchModel' => $this->modelClass,
+        ];
 
         return $actions;
     }
 
-    //before action
     public function beforeAction($action)
     {
         if (!parent::beforeAction($action)) {

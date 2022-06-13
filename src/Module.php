@@ -16,7 +16,9 @@ class Module extends \portalium\base\Module
             'class' => 'yii\rest\UrlRule',
             'controller' => [
                 'content/default',
-            ]
+                'content/category',
+            ],
+            'pluralize' => false
         ],
     ];
 
@@ -25,14 +27,10 @@ class Module extends \portalium\base\Module
             [
                 [
                     'type' => 'model',
-                    'class' => 'portalium\content\models\MenuItem',
+                    'class' => 'portalium\content\models\Content',
                     'route' => '/content/default/view',
-                    'field' => [ 'id' => 'id_content', 'name' => 'name' ],
-                ],
-                [
-                    'type' => 'action',
-                    'route' => '/content/default/index',
-                ],
+                    'field' => [ 'id' => 'id_content', 'name' => 'title' ],
+                ]
             ],
         ];
         return $menuItems;
