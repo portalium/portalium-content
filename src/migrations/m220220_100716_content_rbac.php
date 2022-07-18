@@ -11,55 +11,55 @@ class m220220_100716_content_rbac extends Migration
         $role = $settings['default::role'];
         $admin = (isset($role) && $role != '') ? $auth->getRole($role) : $auth->getRole('admin');
 
-        $contentBackendDefaultIndex = $auth->createPermission('contentBackendDefaultIndex');
-        $contentBackendDefaultIndex->description = 'View content';
-        $auth->add($contentBackendDefaultIndex);
-        $auth->addChild($admin, $contentBackendDefaultIndex);
+        $contentWebDefaultIndex = $auth->createPermission('contentWebDefaultIndex');
+        $contentWebDefaultIndex->description = 'View content';
+        $auth->add($contentWebDefaultIndex);
+        $auth->addChild($admin, $contentWebDefaultIndex);
 
-        $contentBackendDefaultView = $auth->createPermission('contentBackendDefaultView');
-        $contentBackendDefaultView->description = 'View content';
-        $auth->add($contentBackendDefaultView);
-        $auth->addChild($admin, $contentBackendDefaultView);
+        $contentWebDefaultView = $auth->createPermission('contentWebDefaultView');
+        $contentWebDefaultView->description = 'View content';
+        $auth->add($contentWebDefaultView);
+        $auth->addChild($admin, $contentWebDefaultView);
 
-        $contentBackendDefaultCreate = $auth->createPermission('contentBackendDefaultCreate');
-        $contentBackendDefaultCreate->description = 'Create content';
-        $auth->add($contentBackendDefaultCreate);
-        $auth->addChild($admin, $contentBackendDefaultCreate);
+        $contentWebDefaultCreate = $auth->createPermission('contentWebDefaultCreate');
+        $contentWebDefaultCreate->description = 'Create content';
+        $auth->add($contentWebDefaultCreate);
+        $auth->addChild($admin, $contentWebDefaultCreate);
 
-        $contentBackendDefaultUpdate = $auth->createPermission('contentBackendDefaultUpdate');
-        $contentBackendDefaultUpdate->description = 'Update content';
-        $auth->add($contentBackendDefaultUpdate);
-        $auth->addChild($admin, $contentBackendDefaultUpdate);
+        $contentWebDefaultUpdate = $auth->createPermission('contentWebDefaultUpdate');
+        $contentWebDefaultUpdate->description = 'Update content';
+        $auth->add($contentWebDefaultUpdate);
+        $auth->addChild($admin, $contentWebDefaultUpdate);
 
-        $contentBackendDafaultDelete = $auth->createPermission('contentBackendDafaultDelete');
-        $contentBackendDafaultDelete->description = 'Delete content';
-        $auth->add($contentBackendDafaultDelete);
-        $auth->addChild($admin, $contentBackendDafaultDelete);
+        $contentWebDafaultDelete = $auth->createPermission('contentWebDafaultDelete');
+        $contentWebDafaultDelete->description = 'Delete content';
+        $auth->add($contentWebDafaultDelete);
+        $auth->addChild($admin, $contentWebDafaultDelete);
 
-        $contentBackendCategoryIndex = $auth->createPermission('contentBackendCategoryIndex');
-        $contentBackendCategoryIndex->description = 'View content category';
-        $auth->add($contentBackendCategoryIndex);
-        $auth->addChild($admin, $contentBackendCategoryIndex);
+        $contentWebCategoryIndex = $auth->createPermission('contentWebCategoryIndex');
+        $contentWebCategoryIndex->description = 'View content category';
+        $auth->add($contentWebCategoryIndex);
+        $auth->addChild($admin, $contentWebCategoryIndex);
 
-        $contentBackendCategoryView = $auth->createPermission('contentBackendCategoryView');
-        $contentBackendCategoryView->description = 'View content category';
-        $auth->add($contentBackendCategoryView);
-        $auth->addChild($admin, $contentBackendCategoryView);
+        $contentWebCategoryView = $auth->createPermission('contentWebCategoryView');
+        $contentWebCategoryView->description = 'View content category';
+        $auth->add($contentWebCategoryView);
+        $auth->addChild($admin, $contentWebCategoryView);
 
-        $contentBackendCategoryCreate = $auth->createPermission('contentBackendCategoryCreate');
-        $contentBackendCategoryCreate->description = 'Create content category';
-        $auth->add($contentBackendCategoryCreate);
-        $auth->addChild($admin, $contentBackendCategoryCreate);
+        $contentWebCategoryCreate = $auth->createPermission('contentWebCategoryCreate');
+        $contentWebCategoryCreate->description = 'Create content category';
+        $auth->add($contentWebCategoryCreate);
+        $auth->addChild($admin, $contentWebCategoryCreate);
 
-        $contentBackendCategoryUpdate = $auth->createPermission('contentBackendCategoryUpdate');
-        $contentBackendCategoryUpdate->description = 'Update content category';
-        $auth->add($contentBackendCategoryUpdate);
-        $auth->addChild($admin, $contentBackendCategoryUpdate);
+        $contentWebCategoryUpdate = $auth->createPermission('contentWebCategoryUpdate');
+        $contentWebCategoryUpdate->description = 'Update content category';
+        $auth->add($contentWebCategoryUpdate);
+        $auth->addChild($admin, $contentWebCategoryUpdate);
 
-        $contentBackendCategoryDelete = $auth->createPermission('contentBackendCategoryDelete');
-        $contentBackendCategoryDelete->description = 'Delete content category';
-        $auth->add($contentBackendCategoryDelete);
-        $auth->addChild($admin, $contentBackendCategoryDelete);
+        $contentWebCategoryDelete = $auth->createPermission('contentWebCategoryDelete');
+        $contentWebCategoryDelete->description = 'Delete content category';
+        $auth->add($contentWebCategoryDelete);
+        $auth->addChild($admin, $contentWebCategoryDelete);
 
         $contentApiDefaultView = $auth->createPermission('contentApiDefaultView');
         $contentApiDefaultView->description = 'View content';
@@ -92,16 +92,16 @@ class m220220_100716_content_rbac extends Migration
     {
         $auth = Yii::$app->authManager;
 
-        $auth->remove($auth->getPermission('contentBackendDefaultIndex'));
-        $auth->remove($auth->getPermission('contentBackendDefaultView'));
-        $auth->remove($auth->getPermission('contentBackendDefaultCreate'));
-        $auth->remove($auth->getPermission('contentBackendDefaultUpdate'));
-        $auth->remove($auth->getPermission('contentBackendDafaultDelete'));
-        $auth->remove($auth->getPermission('contentBackendCategoryIndex'));
-        $auth->remove($auth->getPermission('contentBackendCategoryView'));
-        $auth->remove($auth->getPermission('contentBackendCategoryCreate'));
-        $auth->remove($auth->getPermission('contentBackendCategoryUpdate'));
-        $auth->remove($auth->getPermission('contentBackendCategoryDelete'));
+        $auth->remove($auth->getPermission('contentWebDefaultIndex'));
+        $auth->remove($auth->getPermission('contentWebDefaultView'));
+        $auth->remove($auth->getPermission('contentWebDefaultCreate'));
+        $auth->remove($auth->getPermission('contentWebDefaultUpdate'));
+        $auth->remove($auth->getPermission('contentWebDafaultDelete'));
+        $auth->remove($auth->getPermission('contentWebCategoryIndex'));
+        $auth->remove($auth->getPermission('contentWebCategoryView'));
+        $auth->remove($auth->getPermission('contentWebCategoryCreate'));
+        $auth->remove($auth->getPermission('contentWebCategoryUpdate'));
+        $auth->remove($auth->getPermission('contentWebCategoryDelete'));
         $auth->remove($auth->getPermission('contentApiDefaultView'));
         $auth->remove($auth->getPermission('contentApiDefaultCreate'));
         $auth->remove($auth->getPermission('contentApiDefaultUpdate'));
