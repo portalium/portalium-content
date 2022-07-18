@@ -1,6 +1,6 @@
 <?php
 
-namespace portalium\content\controllers\backend;
+namespace portalium\content\controllers\web;
 
 use portalium\content\models\Category;
 use portalium\content\models\CategorySearch;
@@ -47,7 +47,7 @@ class CategoryController extends Controller
      */
     public function actionIndex()
     {
-        if (!\Yii::$app->user->can('contentBackendCategoryIndex')) {
+        if (!\Yii::$app->user->can('contentWebCategoryIndex')) {
             throw new \yii\web\ForbiddenHttpException(Module::t('You are not allowed to access this page.'));
         }
         $searchModel = new CategorySearch();
@@ -67,7 +67,7 @@ class CategoryController extends Controller
      */
     public function actionView($id)
     {
-        if (!\Yii::$app->user->can('contentBackendCategoryView')) {
+        if (!\Yii::$app->user->can('contentWebCategoryView')) {
             throw new \yii\web\ForbiddenHttpException(Module::t('You are not allowed to access this page.'));
         }
         return $this->render('view', [
@@ -82,7 +82,7 @@ class CategoryController extends Controller
      */
     public function actionCreate()
     {
-        if (!\Yii::$app->user->can('contentBackendCategoryCreate')) {
+        if (!\Yii::$app->user->can('contentWebCategoryCreate')) {
             throw new \yii\web\ForbiddenHttpException(Module::t('You are not allowed to access this page.'));
         }
         $model = new Category();
@@ -110,7 +110,7 @@ class CategoryController extends Controller
      */
     public function actionUpdate($id)
     {
-        if (!\Yii::$app->user->can('contentBackendCategoryUpdate')) {
+        if (!\Yii::$app->user->can('contentWebCategoryUpdate')) {
             throw new \yii\web\ForbiddenHttpException(Module::t('You are not allowed to access this page.'));
         }
         $model = $this->findModel($id);
@@ -133,7 +133,7 @@ class CategoryController extends Controller
      */
     public function actionDelete($id)
     {
-        if (!\Yii::$app->user->can('contentBackendCategoryDelete')) {
+        if (!\Yii::$app->user->can('contentWebCategoryDelete')) {
             throw new \yii\web\ForbiddenHttpException(Module::t('You are not allowed to access this page.'));
         }
         $this->findModel($id)->delete();
