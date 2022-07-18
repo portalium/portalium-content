@@ -1,6 +1,6 @@
 <?php
 
-namespace portalium\content\controllers\backend;
+namespace portalium\content\controllers\web;
 
 use portalium\content\models\Category;
 use portalium\content\models\CategorySearch;

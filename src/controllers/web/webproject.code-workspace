@@ -1,0 +1,32 @@
+{
+	"folders": [
+		{
+			"path": "../../../../../.."
+		},
+		{
+			"path": "../../../../portalium-composer"
+		},
+		{
+			"path": "../../.."
+		},
+		{
+			"path": "../../../../portalium-core"
+		},
+		{
+			"path": "../../../../portalium-menu"
+		},
+		{
+			"path": "../../../../portalium-site"
+		},
+		{
+			"path": "../../../../portalium-storage"
+		},
+		{
+			"path": "../../../../portalium-theme"
+		},
+		{
+			"path": "../../../../portalium-user"
+		}
+	],
+	"settings": {}
+}
