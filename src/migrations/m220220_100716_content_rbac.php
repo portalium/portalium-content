@@ -1,4 +1,5 @@
 <?php
+
 use yii\db\Migration;
 
 class m220220_100716_content_rbac extends Migration
@@ -7,7 +8,7 @@ class m220220_100716_content_rbac extends Migration
     {
         $auth = Yii::$app->authManager;
 
-        $settings = yii\helpers\ArrayHelper::map(portalium\site\models\Setting::find()->asArray()->all(),'name','value');
+        $settings = yii\helpers\ArrayHelper::map(portalium\site\models\Setting::find()->asArray()->all(), 'name', 'value');
         $role = $settings['default::role'];
         $admin = (isset($role) && $role != '') ? $auth->getRole($role) : $auth->getRole('admin');
 
@@ -86,6 +87,11 @@ class m220220_100716_content_rbac extends Migration
         $contentApiDefaultIndex->description = 'View content';
         $auth->add($contentApiDefaultIndex);
         $auth->addChild($admin, $contentApiDefaultIndex);
+
+        $contentWebDefaultPreview = $auth->createPermission('contentWebDefaultPreview');
+        $contentWebDefaultPreview->description = 'Preview content';
+        $auth->add($contentWebDefaultPreview);
+        $auth->addChild($admin, $contentWebDefaultPreview);
     }
 
     public function down()
@@ -106,6 +112,7 @@ class m220220_100716_content_rbac extends Migration
         $auth->remove($auth->getPermission('contentApiDefaultCreate'));
         $auth->remove($auth->getPermission('contentApiDefaultUpdate'));
         $auth->remove($auth->getPermission('contentApiDefaultDelete'));
+        $auth->remove($auth->getPermission('contentWebDefaultPreview'));
         $auth->remove($auth->getPermission('contentApiDefaultIndex'));
     }
 }

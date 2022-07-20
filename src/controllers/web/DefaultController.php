@@ -8,6 +8,7 @@ use portalium\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use portalium\content\Module;
+
 /**
  * ContentController implements the CRUD actions for Content model.
  */
@@ -28,14 +29,14 @@ class DefaultController extends Controller
                     ],
                 ],
                 'access' => [
-                'class' => \yii\filters\AccessControl::className(),
-                'rules' => [
-                    [
-                        'allow' => true,
-                        'roles' => ['@'],
+                    'class' => \yii\filters\AccessControl::className(),
+                    'rules' => [
+                        [
+                            'allow' => true,
+                            'roles' => ['@'],
+                        ],
                     ],
                 ],
-            ],
             ]
         );
     }
@@ -71,6 +72,22 @@ class DefaultController extends Controller
             throw new \yii\web\ForbiddenHttpException(Module::t('You are not allowed to access this page.'));
         }
         return $this->render('view', [
+            'model' => $this->findModel($id),
+        ]);
+    }
+
+    /**
+     * Displays a single Content model.
+     * @param int $id_content Id Content
+     * @return string
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+    public function actionPreview($id)
+    {
+        if (!\Yii::$app->user->can('contentWebDefaultPreview')) {
+            throw new \yii\web\ForbiddenHttpException(Module::t('You are not allowed to access this page.'));
+        }
+        return $this->render('preview', [
             'model' => $this->findModel($id),
         ]);
     }
