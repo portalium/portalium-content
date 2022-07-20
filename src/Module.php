@@ -22,14 +22,16 @@ class Module extends \portalium\base\Module
         ],
     ];
 
-    public function getMenuItems(){
+    public function getMenuItems()
+    {
         $menuItems = [
             [
                 [
+                    'menu' => 'web',
                     'type' => 'model',
                     'class' => 'portalium\content\models\Content',
-                    'route' => '/content/default/view',
-                    'field' => [ 'id' => 'id_content', 'name' => 'title' ],
+                    'route' => '/content/default/preview',
+                    'field' => ['id' => 'id_content', 'name' => 'title'],
                 ]
             ],
         ];
