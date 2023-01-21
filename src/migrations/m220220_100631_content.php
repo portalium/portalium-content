@@ -2,6 +2,7 @@
 
 use yii\db\Schema;
 use yii\db\Migration;
+use portalium\content\Module;
 
 class m220220_100631_content extends Migration
 {
@@ -17,7 +18,7 @@ class m220220_100631_content extends Migration
         $tableOptions = 'ENGINE=InnoDB';
 
         $this->createTable(
-            '{{%content_content}}',
+            '{{%' . Module::$tablePrefix . 'content}}',
             [
                 'id_content'=> $this->primaryKey(),
                 'name'=> $this->string(255)->notNull(),
@@ -35,6 +36,6 @@ class m220220_100631_content extends Migration
 
     public function safeDown()
     {
-        $this->dropTable('{{%content}}');
+        $this->dropTable('{{%' . Module::$tablePrefix . 'content}}');
     }
 }
