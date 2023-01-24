@@ -11,6 +11,7 @@ use yii\behaviors\TimestampBehavior;
  * @property int $id_category
  * @property string $name
  * @property string $slug
+ * @property int $id_user
  * @property string $date_create
  * @property string $date_update
  */
@@ -27,6 +28,12 @@ class Category extends \yii\db\ActiveRecord
                 'createdAtAttribute' => 'date_create',
                 'updatedAtAttribute' => 'date_update',
                 'value' => date("Y-m-d H:i:s"),
+            ],
+            [
+                'class' => 'yii\behaviors\BlameableBehavior',
+                'createdByAttribute' => 'id_user',
+                'updatedByAttribute' => 'id_user',
+                'value' => Yii::$app->user->id,
             ],
         ];
     }
@@ -46,7 +53,7 @@ class Category extends \yii\db\ActiveRecord
     {
         return [
             [['name', 'slug'], 'required'],
-            [['id_category'], 'integer'],
+            [['id_category', 'id_user'], 'integer'],
             [['date_create', 'date_update'], 'safe'],
             [['name', 'slug'], 'string', 'max' => 255],
         ];

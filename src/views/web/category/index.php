@@ -18,7 +18,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php Panel::begin([
         'title' => $this->title,
         'actions' => [
-            Html::a(Module::t('Create Category'), ['create'], ['class' => 'btn btn-success'])
+            Html::a(Module::t(''), ['create'], ['class' => 'fa fa-plus btn btn-success'])
         ]
     ]) ?>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
