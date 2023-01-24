@@ -3,7 +3,7 @@
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\ActionColumn;
-use yii\grid\GridView;
+use portalium\theme\widgets\GridView;
 use portalium\content\Module;
 use portalium\theme\widgets\Panel;
 /* @var $this yii\web\View */
@@ -18,7 +18,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php Panel::begin([
         'title' => $this->title,
         'actions' => [
-            Html::a(Module::t('Create Category'), ['create'], ['class' => 'btn btn-success'])
+            Html::a(Module::t(''), ['create'], ['class' => 'fa fa-plus btn btn-success'])
         ]
     ]) ?>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>

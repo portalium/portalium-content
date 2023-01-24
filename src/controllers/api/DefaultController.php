@@ -5,6 +5,7 @@ namespace portalium\content\controllers\api;
 use Yii;
 use portalium\content\Module;
 use portalium\content\models\Content;
+use portalium\content\models\ContentSearch;
 use portalium\rest\ActiveController as RestActiveController;
 
 class DefaultController extends RestActiveController
@@ -18,7 +19,15 @@ class DefaultController extends RestActiveController
             'class' => \yii\data\ActiveDataFilter::class,
             'searchModel' => $this->modelClass,
         ];
-
+        
+        $actions['index']['prepareDataProvider'] = function ($action) {
+            $searchModel = new ContentSearch();
+            $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+            if(!Yii::$app->user->can('contentApiDefaultIndex')){
+                $dataProvider->query->andWhere(['id_user'=>Yii::$app->user->id]);
+            }
+            return $dataProvider;
+        };  
         return $actions;
     }
 
@@ -45,8 +54,8 @@ class DefaultController extends RestActiveController
                     throw new \yii\web\ForbiddenHttpException(Module::t('You do not have permission to delete this content.'));
                 break;
             default:
-                if (!Yii::$app->user->can('contentApiDefaultIndex'))
-                    throw new \yii\web\ForbiddenHttpException(Module::t('You do not have permission to delete this content.'));
+                if (!Yii::$app->user->can('contentApiDefaultIndex') && !Yii::$app->user->can('contentApiDefaultIndexOwn'))
+                    throw new \yii\web\ForbiddenHttpException(Module::t('You do not have permission to view this content.'));
                 break;
         }
         

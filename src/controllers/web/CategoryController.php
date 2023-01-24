@@ -47,11 +47,13 @@ class CategoryController extends Controller
      */
     public function actionIndex()
     {
-        if (!\Yii::$app->user->can('contentWebCategoryIndex')) {
+        if (!\Yii::$app->user->can('contentWebCategoryIndex') && !\Yii::$app->user->can('contentWebCategoryIndexOwn')) {
             throw new \yii\web\ForbiddenHttpException(Module::t('You are not allowed to access this page.'));
         }
         $searchModel = new CategorySearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
+        if(!\Yii::$app->user->can('contentWebCategoryIndex'))
+            $dataProvider->query->andWhere(['id_user'=>\Yii::$app->user->id]);
 
         return $this->render('index', [
             'searchModel' => $searchModel,
@@ -67,7 +69,7 @@ class CategoryController extends Controller
      */
     public function actionView($id)
     {
-        if (!\Yii::$app->user->can('contentWebCategoryView')) {
+        if (!\Yii::$app->user->can('contentWebCategoryView', ['model'=>$this->findModel($id)])) {
             throw new \yii\web\ForbiddenHttpException(Module::t('You are not allowed to access this page.'));
         }
         return $this->render('view', [
@@ -110,7 +112,7 @@ class CategoryController extends Controller
      */
     public function actionUpdate($id)
     {
-        if (!\Yii::$app->user->can('contentWebCategoryUpdate')) {
+        if (!\Yii::$app->user->can('contentWebCategoryUpdate', ['model'=>$this->findModel($id)])) {
             throw new \yii\web\ForbiddenHttpException(Module::t('You are not allowed to access this page.'));
         }
         $model = $this->findModel($id);
@@ -133,7 +135,7 @@ class CategoryController extends Controller
      */
     public function actionDelete($id)
     {
-        if (!\Yii::$app->user->can('contentWebCategoryDelete')) {
+        if (!\Yii::$app->user->can('contentWebCategoryDelete', ['model'=>$this->findModel($id)])) {
             throw new \yii\web\ForbiddenHttpException(Module::t('You are not allowed to access this page.'));
         }
         $this->findModel($id)->delete();
