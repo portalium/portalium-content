@@ -2,6 +2,7 @@
 
 use yii\db\Schema;
 use yii\db\Migration;
+use portalium\content\Module;
 
 class m220220_100716_content_category extends Migration
 {
@@ -17,11 +18,12 @@ class m220220_100716_content_category extends Migration
         $tableOptions = 'ENGINE=InnoDB';
 
         $this->createTable(
-            '{{%content_category}}',
+            '{{%' . Module::$tablePrefix . 'category}}',
             [
                 'id_category'=> $this->primaryKey(),
                 'name'=> $this->string(255)->notNull(),
                 'slug'=> $this->string(255)->notNull(),
+                'id_user'=> $this->integer(11)->notNull(),
                 'date_create'=> $this->datetime()->notNull()->defaultExpression("CURRENT_TIMESTAMP"),
                 'date_update'=> $this->datetime()->notNull()->defaultExpression("CURRENT_TIMESTAMP"),
             ],$tableOptions
@@ -31,6 +33,6 @@ class m220220_100716_content_category extends Migration
 
     public function safeDown()
     {
-        $this->dropTable('{{%content_category}}');
+        $this->dropTable('{{%' . Module::$tablePrefix . 'category}}');
     }
 }

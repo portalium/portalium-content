@@ -28,15 +28,16 @@ class DefaultController extends Controller
                         'delete' => ['POST'],
                     ],
                 ],
-                'access' => [
+                /* 'access' => [
                     'class' => \yii\filters\AccessControl::className(),
                     'rules' => [
                         [
                             'allow' => true,
-                            'roles' => ['@'],
+                            'actions' => ['index'],
+                            'roles' => ['contentWebDefaultIndex'],
                         ],
                     ],
-                ],
+                ], */
             ]
         );
     }
@@ -48,12 +49,15 @@ class DefaultController extends Controller
      */
     public function actionIndex()
     {
-        if (!\Yii::$app->user->can('contentWebDefaultIndex')) {
+        if (!\Yii::$app->user->can('contentWebDefaultIndex') && !\Yii::$app->user->can('contentWebDefaultIndexOwn')) {
             throw new \yii\web\ForbiddenHttpException(Module::t('You are not allowed to access this page.'));
         }
+
         $searchModel = new ContentSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
-
+        if(!\Yii::$app->user->can('contentWebDefaultIndex'))
+            $dataProvider->query->andWhere(['id_user'=>\Yii::$app->user->id]);
+        
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
@@ -68,7 +72,9 @@ class DefaultController extends Controller
      */
     public function actionView($id)
     {
-        if (!\Yii::$app->user->can('contentWebDefaultView')) {
+        $model = $this->findModel($id);
+
+        if ($model && !\Yii::$app->user->can('contentWebDefaultView', ['model' => $model])) {
             throw new \yii\web\ForbiddenHttpException(Module::t('You are not allowed to access this page.'));
         }
         return $this->render('view', [
@@ -84,7 +90,7 @@ class DefaultController extends Controller
      */
     public function actionPreview($id)
     {
-        if (!\Yii::$app->user->can('contentWebDefaultPreview')) {
+        if (!\Yii::$app->user->can('contentWebDefaultPreview', ['model' => $this->findModel($id)])) {
             throw new \yii\web\ForbiddenHttpException(Module::t('You are not allowed to access this page.'));
         }
         return $this->render('preview', [
@@ -126,7 +132,7 @@ class DefaultController extends Controller
      */
     public function actionUpdate($id)
     {
-        if (!\Yii::$app->user->can('contentWebDefaultUpdate')) {
+        if (!\Yii::$app->user->can('contentWebDefaultUpdate', ['model' => $this->findModel($id)])) {
             throw new \yii\web\ForbiddenHttpException(Module::t('You are not allowed to access this page.'));
         }
         $model = $this->findModel($id);
@@ -149,7 +155,7 @@ class DefaultController extends Controller
      */
     public function actionDelete($id)
     {
-        if (!\Yii::$app->user->can('contentWebDafaultDelete')) {
+        if (!\Yii::$app->user->can('contentWebDefaultDelete', ['model' => $this->findModel($id)])) {
             throw new \yii\web\ForbiddenHttpException(Module::t('You are not allowed to access this page.'));
         }
         $this->findModel($id)->delete();
