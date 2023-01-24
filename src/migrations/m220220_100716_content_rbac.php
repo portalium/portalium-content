@@ -10,7 +10,7 @@ class m220220_100716_content_rbac extends Migration
     {
         $auth = Yii::$app->authManager;
 
-        $role = Yii::$app->settings->getValue('default::role');
+        $role = Yii::$app->setting->getValue('default::role');
         $admin = (isset($role) && $role != '') ? $auth->getRole($role) : $auth->getRole('admin');
 
         $contentWebDefaultIndex = $auth->createPermission('contentWebDefaultIndex');
