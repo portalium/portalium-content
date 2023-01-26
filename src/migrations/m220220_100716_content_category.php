@@ -3,7 +3,7 @@
 use yii\db\Schema;
 use yii\db\Migration;
 use portalium\content\Module;
-
+use portalium\user\Module as UserModule;
 class m220220_100716_content_category extends Migration
 {
 
@@ -27,6 +27,23 @@ class m220220_100716_content_category extends Migration
                 'date_create'=> $this->datetime()->notNull()->defaultExpression("CURRENT_TIMESTAMP"),
                 'date_update'=> $this->datetime()->notNull()->defaultExpression("CURRENT_TIMESTAMP"),
             ],$tableOptions
+        );
+
+        // creates index for column `id_user`
+        $this->createIndex(
+            '{{%idx-' . Module::$tablePrefix . 'category-id_user}}',
+            '{{%' . Module::$tablePrefix . 'category}}',
+            'id_user'
+        );
+
+        // add foreign key for table `{{%user}}`
+        $this->addForeignKey(
+            '{{%fk-' . Module::$tablePrefix . 'category-id_user}}',
+            '{{%' . Module::$tablePrefix . 'category}}',
+            'id_user',
+            '{{%' . UserModule::$tablePrefix . 'user}}',
+            'id_user',
+            'RESTRICT'
         );
 
     }
