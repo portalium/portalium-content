@@ -1,7 +1,7 @@
 <?php
 
 use yii\db\Schema;
-use yii\db\Migration;
+use portalium\db\Migration;
 use portalium\content\Module;
 use portalium\user\Module as UserModule;
 class m220220_100716_content_category extends Migration

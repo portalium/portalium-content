@@ -1,7 +1,7 @@
 <?php
 
 use portalium\content\rbac\AuthorRule;
-use yii\db\Migration;
+use portalium\db\Migration;
 use Yii;
 
 class m220220_100716_content_rbac extends Migration
