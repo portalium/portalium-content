@@ -5,6 +5,7 @@ namespace portalium\content\controllers\web;
 use portalium\content\models\Content;
 use portalium\content\models\ContentSearch;
 use portalium\web\Controller;
+use yii\helpers\ArrayHelper;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use portalium\content\Module;
@@ -28,16 +29,6 @@ class DefaultController extends Controller
                         'delete' => ['POST'],
                     ],
                 ],
-                /* 'access' => [
-                    'class' => \yii\filters\AccessControl::className(),
-                    'rules' => [
-                        [
-                            'allow' => true,
-                            'actions' => ['index'],
-                            'roles' => ['contentWebDefaultIndex'],
-                        ],
-                    ],
-                ], */
             ]
         );
     }
@@ -99,6 +90,27 @@ class DefaultController extends Controller
     }
 
     /**
+     * Displays a single Content model.
+     * @param int $id_content Id Content
+     * @return string
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+    public function actionShow($id)
+    {
+        $model = $this->findModel($id);
+        if ($model->access != Content::ACCESS['public'] && !\Yii::$app->user->can('contentWebDefaultShow', ['model' => $this->findModel($id)])) {
+            throw new \yii\web\ForbiddenHttpException(Module::t('You are not allowed to access this page.'));
+        }
+
+        if ($model && $model->layout != 'null') {
+            $this->layout = '@portalium/theme/layouts/' . $model->layout;
+        }
+        return $this->render('show', [
+            'model' => $model,
+        ]);
+    }
+
+    /**
      * Creates a new Content model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return string|\yii\web\Response
@@ -118,8 +130,10 @@ class DefaultController extends Controller
             $model->loadDefaultValues();
         }
 
+
         return $this->render('create', [
             'model' => $model,
+            'layouts' => $this->getLayouts()
         ]);
     }
 
@@ -143,6 +157,7 @@ class DefaultController extends Controller
 
         return $this->render('update', [
             'model' => $model,
+            'layouts' => $this->getLayouts()
         ]);
     }
 
@@ -177,5 +192,10 @@ class DefaultController extends Controller
         }
 
         throw new NotFoundHttpException(Module::t('The requested page does not exist.'));
+    }
+
+    private function getLayouts()
+    {
+        return \yii\helpers\ArrayHelper::map(\portalium\theme\Module::getLayouts(), 'name', 'layout');
     }
 }

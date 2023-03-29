@@ -28,6 +28,11 @@ class m220220_100716_content_rbac extends Migration
         $auth->add($contentWebDefaultPreview);
         $auth->addChild($admin, $contentWebDefaultPreview);
 
+        $contentWebDefaultShow = $auth->createPermission('contentWebDefaultShow');
+        $contentWebDefaultShow->description = 'Content Web Default Show';
+        $auth->add($contentWebDefaultShow);
+        $auth->addChild($admin, $contentWebDefaultShow);
+
         $contentWebDefaultCreate = $auth->createPermission('contentWebDefaultCreate');
         $contentWebDefaultCreate->description = 'Content Web DefaultCreate';
         $auth->add($contentWebDefaultCreate);
@@ -131,6 +136,7 @@ class m220220_100716_content_rbac extends Migration
 
         $auth->remove($auth->getPermission('contentWebDefaultIndex'));
         $auth->remove($auth->getPermission('contentWebDefaultView'));
+        $auth->remove($auth->getPermission('contentWebDefaultShow'));
         $auth->remove($auth->getPermission('contentWebDefaultCreate'));
         $auth->remove($auth->getPermission('contentWebDefaultUpdate'));
         $auth->remove($auth->getPermission('contentWebDefaultDelete'));

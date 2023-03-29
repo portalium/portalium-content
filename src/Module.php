@@ -30,7 +30,7 @@ class Module extends \portalium\base\Module
                     'menu' => 'web',
                     'type' => 'model',
                     'class' => 'portalium\content\models\Content',
-                    'route' => '/content/default/preview',
+                    'route' => '/content/default/show',
                     'field' => ['id' => 'id_content', 'name' => 'title'],
                 ]
             ],

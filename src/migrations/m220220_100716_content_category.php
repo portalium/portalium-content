@@ -24,6 +24,7 @@ class m220220_100716_content_category extends Migration
                 'name'=> $this->string(255)->notNull(),
                 'slug'=> $this->string(255)->notNull(),
                 'id_user'=> $this->integer(11)->notNull(),
+                'layout'=> $this->string(255),
                 'date_create'=> $this->datetime()->notNull()->defaultExpression("CURRENT_TIMESTAMP"),
                 'date_update'=> $this->datetime()->notNull()->defaultExpression("CURRENT_TIMESTAMP"),
             ],$tableOptions

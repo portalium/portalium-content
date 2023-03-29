@@ -25,6 +25,11 @@ use kartik\editors\Summernote;
 
     <?= $form->field($model, 'status')->dropDownList(Content::getStatusList()['STATUS']) ?>
 
+    <?= $form->field($model, 'layout')->dropDownList(\yii\helpers\ArrayHelper::map(\portalium\theme\Module::getLayouts(), 'layout', 'name')) ?>
+
+    <?= $form->field($model, 'access')->dropDownList(Content::getStatusList()['ACCESS']) ?>
+
+
     <div class="form-group">
         <?= Html::submitButton(Module::t('Save'), ['class' => 'btn btn-success']) ?>
     </div>

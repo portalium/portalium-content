@@ -134,6 +134,14 @@ class m220220_100716_content_rule_rbac extends Migration
         $contentWebDefaultPreview = $auth->getPermission('contentWebDefaultPreview');
         $auth->addChild($contentWebDefaultPreviewOwn, $contentWebDefaultPreview);
 
+        $contentWebDefaultShowOwn = $auth->createPermission('contentWebDefaultShowOwn');
+        $contentWebDefaultShowOwn->description = 'Content Web DefaultShowOwn';
+        $contentWebDefaultShowOwn->ruleName = $rule->name;
+        $auth->add($contentWebDefaultShowOwn);
+        $auth->addChild($admin, $contentWebDefaultShowOwn);
+        $contentWebDefaultShow = $auth->getPermission('contentWebDefaultShow');
+        $auth->addChild($contentWebDefaultShowOwn, $contentWebDefaultShow);
+
         $contentApiCategoryViewOwn = $auth->createPermission('contentApiCategoryViewOwn');
         $contentApiCategoryViewOwn->description = 'Content Api Category View Own';
         $contentApiCategoryViewOwn->ruleName = $rule->name;
@@ -179,6 +187,7 @@ class m220220_100716_content_rule_rbac extends Migration
 
         $auth->remove($auth->getPermission('contentOwnWebDefaultIndex'));
         $auth->remove($auth->getPermission('contentOwnWebDefaultView'));
+        $auth->remove($auth->getPermission('contentOwnWebDefaultShow'));
         $auth->remove($auth->getPermission('contentOwnWebDefaultCreate'));
         $auth->remove($auth->getPermission('contentOwnWebDefaultUpdate'));
         $auth->remove($auth->getPermission('contentOwnWebDefaultDelete'));

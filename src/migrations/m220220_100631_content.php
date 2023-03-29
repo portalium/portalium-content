@@ -28,6 +28,7 @@ class m220220_100631_content extends Migration
                 'id_user'=> $this->integer(11)->notNull(),
                 'id_category'=> $this->integer(11)->notNull(),
                 'status'=> $this->smallInteger(6)->notNull(),
+                'access'=> $this->smallInteger(6)->notNull(),
                 'date_create'=> $this->datetime()->notNull()->defaultExpression("CURRENT_TIMESTAMP"),
                 'date_update'=> $this->datetime()->notNull()->defaultExpression("CURRENT_TIMESTAMP"),
             ],$tableOptions
