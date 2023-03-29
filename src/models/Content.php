@@ -72,7 +72,7 @@ class Content extends \yii\db\ActiveRecord
             [['name', 'title', 'id_category', 'status', 'access'], 'required'],
             [['title', 'body', 'layout'], 'string'],
             [['id_user', 'id_category', 'status', 'access'], 'integer'],
-            [['date_create', 'date_update'], 'safe'],
+            [['date_create', 'date_update', 'body'], 'safe'],
             [['name'], 'string', 'max' => 255],
         ];
     }
@@ -122,5 +122,4 @@ class Content extends \yii\db\ActiveRecord
     {
         return $this->hasMany(Category::class, ['id_category' => 'id_category']);
     }
-
 }
