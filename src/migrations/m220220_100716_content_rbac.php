@@ -1,7 +1,7 @@
 <?php
 
 use portalium\content\rbac\AuthorRule;
-use portalium\db\Migration;
+use yii\db\Migration;
 use Yii;
 
 class m220220_100716_content_rbac extends Migration
@@ -27,6 +27,11 @@ class m220220_100716_content_rbac extends Migration
         $contentWebDefaultPreview->description = 'Content Web DefaultPreview';
         $auth->add($contentWebDefaultPreview);
         $auth->addChild($admin, $contentWebDefaultPreview);
+
+        $contentWebDefaultShow = $auth->createPermission('contentWebDefaultShow');
+        $contentWebDefaultShow->description = 'Content Web Default Show';
+        $auth->add($contentWebDefaultShow);
+        $auth->addChild($admin, $contentWebDefaultShow);
 
         $contentWebDefaultCreate = $auth->createPermission('contentWebDefaultCreate');
         $contentWebDefaultCreate->description = 'Content Web DefaultCreate';
@@ -131,6 +136,7 @@ class m220220_100716_content_rbac extends Migration
 
         $auth->remove($auth->getPermission('contentWebDefaultIndex'));
         $auth->remove($auth->getPermission('contentWebDefaultView'));
+        $auth->remove($auth->getPermission('contentWebDefaultShow'));
         $auth->remove($auth->getPermission('contentWebDefaultCreate'));
         $auth->remove($auth->getPermission('contentWebDefaultUpdate'));
         $auth->remove($auth->getPermission('contentWebDefaultDelete'));
