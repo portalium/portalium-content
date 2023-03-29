@@ -22,8 +22,14 @@ use yii\helpers\ArrayHelper;
 class Content extends \yii\db\ActiveRecord
 {
     const STATUS = [
-        'passive' => 0,
-        'active' => 10
+        'draft' => 0,
+        'active' => 1,
+        'publish' => 2,
+    ];
+
+    const ACCESS = [
+        'public' => 0,
+        'private' => 1,
     ];
 
     /**
@@ -63,9 +69,9 @@ class Content extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'title', 'id_category', 'status'], 'required'],
-            [['title', 'body'], 'string'],
-            [['id_user', 'id_category', 'status'], 'integer'],
+            [['name', 'title', 'id_category', 'status', 'access'], 'required'],
+            [['title', 'body', 'layout'], 'string'],
+            [['id_user', 'id_category', 'status', 'access'], 'integer'],
             [['date_create', 'date_update'], 'safe'],
             [['name'], 'string', 'max' => 255],
         ];
@@ -84,6 +90,7 @@ class Content extends \yii\db\ActiveRecord
             'id_user' => 'Id User',
             'id_category' => 'Id Category',
             'status' => 'Status',
+            'access' => 'Access',
             'date_create' => 'Date Create',
             'date_update' => 'Date Update',
         ];
@@ -94,9 +101,14 @@ class Content extends \yii\db\ActiveRecord
         //return value and label
         return [
             'STATUS' => [
-                self::STATUS['passive'] => Module::t('Passive'),
-                self::STATUS['active'] => Module::t('Active')
-            ]
+                self::STATUS['draft'] => Module::t('Draft'),
+                self::STATUS['active'] => Module::t('Active'),
+                self::STATUS['publish'] => Module::t('Publish'),
+            ],
+            'ACCESS' => [
+                self::ACCESS['public'] => Module::t('Public'),
+                self::ACCESS['private'] => Module::t('Private'),
+            ],
         ];
     }
 

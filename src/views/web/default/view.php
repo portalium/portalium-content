@@ -11,7 +11,6 @@ use portalium\theme\widgets\Panel;
 $this->title = $model->name;
 $this->params['breadcrumbs'][] = ['label' => Module::t('Contents'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
-\yii\web\YiiAsset::register($this);
 ?>
 <div class="content-view">
 
