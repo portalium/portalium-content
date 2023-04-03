@@ -16,11 +16,8 @@ $this->params['breadcrumbs'][] = Module::t('Update');
 ?>
 <div class="content-update">
 
-    <?php Panel::begin([
-        'title' => $this->title,
-    ]) ?>
     <?= $this->render('_form', [
         'model' => $model,
-    ]); Panel::end() ?>
+    ]); ?>
 
 </div>
