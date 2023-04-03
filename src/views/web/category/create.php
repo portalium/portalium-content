@@ -12,11 +12,8 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="category-create">
 
-    <?php Panel::begin([
-        'title' => $this->title,
-    ]) ?>
     <?= $this->render('_form', [
         'model' => $model,
-    ]); Panel::end() ?>
+    ]); ?>
 
 </div>

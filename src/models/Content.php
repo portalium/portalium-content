@@ -83,16 +83,16 @@ class Content extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id_content' => 'Id Content',
-            'name' => 'Name',
-            'title' => 'Title',
-            'body' => 'Body',
-            'id_user' => 'Id User',
-            'id_category' => 'Id Category',
-            'status' => 'Status',
-            'access' => 'Access',
-            'date_create' => 'Date Create',
-            'date_update' => 'Date Update',
+            'id_content' => Module::t('Id Content'),
+            'name' => Module::t('Name'),
+            'title' => Module::t('Title'),
+            'body' => Module::t('Body'),
+            'id_user' => Module::t('Id User'),
+            'id_category' => Module::t('Id Category'),
+            'status' => Module::t('Status'),
+            'access' => Module::t('Access'),
+            'date_create' => Module::t('Date Create'),
+            'date_update' => Module::t('Date Update'),
         ];
     }
 
