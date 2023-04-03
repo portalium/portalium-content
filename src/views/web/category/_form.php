@@ -1,8 +1,9 @@
 <?php
 
 use yii\helpers\Html;
-use yii\widgets\ActiveForm;
 use portalium\content\Module;
+use portalium\theme\widgets\Panel;
+use portalium\theme\widgets\ActiveForm;
 /* @var $this yii\web\View */
 /* @var $model portalium\content\models\Category */
 /* @var $form yii\widgets\ActiveForm */
@@ -12,13 +13,22 @@ use portalium\content\Module;
 
     <?php $form = ActiveForm::begin(); ?>
 
+    <?php Panel::begin([
+        'title' => Html::encode($this->title),
+        'actions' => [
+            'header' => [
+            ],
+            'footer' => [
+                Html::submitButton(Module::t( 'Save'), ['class' => 'btn btn-success']),
+            ]
+        ],
+    ]) ?>
+
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'slug')->textInput(['maxlength' => true]) ?>
 
-    <div class="form-group">
-        <?= Html::submitButton(Module::t('Save'), ['class' => 'btn btn-success']) ?>
-    </div>
+    <?php Panel::end() ?>
 
     <?php ActiveForm::end(); ?>
 
