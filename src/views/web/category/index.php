@@ -1,11 +1,11 @@
 <?php
 
-use yii\helpers\Html;
 use yii\helpers\Url;
-use yii\grid\ActionColumn;
-use portalium\theme\widgets\GridView;
+use yii\helpers\Html;
 use portalium\content\Module;
 use portalium\theme\widgets\Panel;
+use portalium\theme\widgets\GridView;
+use portalium\theme\widgets\ActionColumn;
 /* @var $this yii\web\View */
 /* @var $searchModel portalium\content\models\CategorySearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -33,7 +33,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'slug',
             'date_create',
             'date_update',
-            ['class' => 'yii\grid\ActionColumn'],
+            ['class' => ActionColumn::class],
         ],
     ]); Panel::end() ?>
 
