@@ -19,7 +19,7 @@ class m010101_010102_content_menu extends Migration
             'type' => '1',
             'style' => '{"icon":"","color":"","iconSize":""}',
             'data' => '{"type":"1","data":{"route":"#"}}',
-            'sort' => '10',
+            'sort' => '7',
             'id_menu' => $id_menu,
             'name_auth' => 'contentWebDefaultIndex',
             'id_user' => 1,
