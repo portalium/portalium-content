@@ -11,6 +11,7 @@ class Module extends \portalium\base\Module
 {
     public static $description = 'Content Management Module';
     public static $tablePrefix = 'content_';
+    public static $name = 'Content';
     public $apiRules = [
         [
             'class' => 'yii\rest\UrlRule',
