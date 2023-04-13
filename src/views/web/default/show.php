@@ -8,6 +8,7 @@ use portalium\theme\widgets\Panel;
 /* @var $this yii\web\View */
 /* @var $model portalium\content\models\Content */
 
+$this->title = $model->title;
 ?>
 
     <?php
