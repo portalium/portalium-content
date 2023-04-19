@@ -124,7 +124,7 @@ class DefaultController extends Controller
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
-                Yii::$app->session->addFlash('success', Module::t('Category has been created'));
+                Yii::$app->session->addFlash('success', Module::t('Content has been created'));
                 return $this->redirect(['view', 'id' => $model->id_content]);
             }
         } else {
@@ -176,7 +176,7 @@ class DefaultController extends Controller
             throw new \yii\web\ForbiddenHttpException(Module::t('You are not allowed to access this page.'));
         }
         if($this->findModel($id)->delete()){
-            Yii::$app->session->addFlash('info', Module::t('Category has been deleted'));
+            Yii::$app->session->addFlash('info', Module::t('Content has been deleted'));
         }
 
         return $this->redirect(['index']);
