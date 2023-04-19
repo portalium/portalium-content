@@ -20,4 +20,10 @@ return [
     'Date Updated' => 'Güncelleme Tarihi',
     'Label' => 'Etiket',
     'Content Management Module' => 'İçerik Yönetim Modülü',
+    'Content has been created' => 'İçerik oluşturuldu',
+    'Content has been updated' => 'İçerik güncellendi',
+    'Content has been deleted' => 'İçerik silindi',
+    'Category has been created' => 'Kategori oluşturuldu',
+    'Category has been updated' => 'Kategori güncellendi',
+    'Category has been deleted' => 'Kategori silindi',
 ];

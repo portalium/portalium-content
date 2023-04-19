@@ -1,7 +1,7 @@
 <?php
 
 namespace portalium\content\controllers\web;
-
+use Yii;
 use portalium\content\models\Category;
 use portalium\content\models\CategorySearch;
 use portalium\web\Controller;
@@ -92,6 +92,7 @@ class CategoryController extends Controller
         if ($this->request->isPost) {
 
             if ($model->load($this->request->post()) && $model->save()) {
+                Yii::$app->session->addFlash('success', Module::t('Category has been created'));
                 return $this->redirect(['view', 'id' => $model->id_category]);
             }
         } else {
@@ -118,6 +119,7 @@ class CategoryController extends Controller
         $model = $this->findModel($id);
 
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
+            Yii::$app->session->addFlash('success', Module::t('Category has been updated'));
             return $this->redirect(['view', 'id' => $model->id_category]);
         }
 
@@ -138,8 +140,9 @@ class CategoryController extends Controller
         if (!\Yii::$app->user->can('contentWebCategoryDelete', ['model'=>$this->findModel($id)])) {
             throw new \yii\web\ForbiddenHttpException(Module::t('You are not allowed to access this page.'));
         }
-        $this->findModel($id)->delete();
-
+        if($this->findModel($id)->delete()){
+            Yii::$app->session->addFlash('info', Module::t('Category has been deleted'));
+        }
         return $this->redirect(['index']);
     }
 
