@@ -2,17 +2,16 @@
 
 use portalium\content\rbac\OwnRule;
 use yii\db\Migration;
-use Yii;
 
 class m220220_100716_content_rule_rbac extends Migration
 {
     public function up()
     {
-        $auth = Yii::$app->authManager;
+        $auth = \Yii::$app->authManager;
 
         $rule = new OwnRule();
         $auth->add($rule);
-        $role = Yii::$app->setting->getValue('default::role');
+        $role = \Yii::$app->setting->getValue('default::role');
         $admin = (isset($role) && $role != '') ? $auth->getRole($role) : $auth->getRole('admin');
 
         $contentWebDefaultIndexOwn = $auth->createPermission('contentWebDefaultIndexOwn');
@@ -183,7 +182,7 @@ class m220220_100716_content_rule_rbac extends Migration
 
     public function down()
     {
-        $auth = Yii::$app->authManager;
+        $auth = \Yii::$app->authManager;
 
         $auth->remove($auth->getPermission('contentOwnWebDefaultIndex'));
         $auth->remove($auth->getPermission('contentOwnWebDefaultView'));
