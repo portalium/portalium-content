@@ -17,17 +17,13 @@ class DefaultController extends RestActiveController
         $actions = parent::actions();
         $actions['index']['dataFilter'] = [
             'class' => \yii\data\ActiveDataFilter::class,
-            'searchModel' => $this->modelClass,
+            'searchModel' => ContentSearch::class,
+            'attributeMap' => [
+                'title' => 'title',
+            ],
         ];
         
-        $actions['index']['prepareDataProvider'] = function ($action) {
-            $searchModel = new ContentSearch();
-            $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-            if(!Yii::$app->user->can('contentApiDefaultIndex')){
-                $dataProvider->query->andWhere(['id_user'=>Yii::$app->user->id]);
-            }
-            return $dataProvider;
-        };  
+        
         return $actions;
     }
 
