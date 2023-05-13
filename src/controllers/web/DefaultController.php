@@ -2,6 +2,7 @@
 
 namespace portalium\content\controllers\web;
 
+use Yii;
 use portalium\content\models\Content;
 use portalium\content\models\ContentSearch;
 use portalium\web\Controller;
