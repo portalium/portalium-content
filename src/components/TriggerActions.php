@@ -17,7 +17,6 @@ class TriggerActions extends BaseObject
 
     public function onUserDeleteBefore($event)
     {
-        Yii::warning("sdasd");
         ['id' => $id_user, 'default_user' => $defaultUser, 'action' => $action] = $event->payload;
         if ($action == 'delete') {
             $contents = Content::find()->where(['id_user' => $id_user])->all();
