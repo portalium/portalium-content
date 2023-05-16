@@ -2,6 +2,7 @@
 
 namespace portalium\content\controllers\web;
 
+use Yii;
 use portalium\content\models\Content;
 use portalium\content\models\ContentSearch;
 use portalium\web\Controller;
@@ -124,6 +125,7 @@ class DefaultController extends Controller
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
+                Yii::$app->session->addFlash('success', Module::t('Content has been created'));
                 return $this->redirect(['view', 'id' => $model->id_content]);
             }
         } else {
@@ -152,6 +154,7 @@ class DefaultController extends Controller
         $model = $this->findModel($id);
 
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
+            Yii::$app->session->addFlash('success', Module::t('Content has been updated'));
             return $this->redirect(['view', 'id' => $model->id_content]);
         }
 
@@ -173,7 +176,9 @@ class DefaultController extends Controller
         if (!\Yii::$app->user->can('contentWebDefaultDelete', ['model' => $this->findModel($id)])) {
             throw new \yii\web\ForbiddenHttpException(Module::t('You are not allowed to access this page.'));
         }
-        $this->findModel($id)->delete();
+        if($this->findModel($id)->delete()){
+            Yii::$app->session->addFlash('info', Module::t('Content has been deleted'));
+        }
 
         return $this->redirect(['index']);
     }
