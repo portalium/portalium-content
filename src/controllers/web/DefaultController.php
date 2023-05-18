@@ -16,22 +16,25 @@ use portalium\content\Module;
  */
 class DefaultController extends Controller
 {
+    /* public function behaviors()
+    {
+        $behaviors = parent::behaviors();
+
+        $behaviors['access']['except'] = ['index'];
+        return $behaviors;
+    } */
     /**
      * @inheritDoc
      */
     public function behaviors()
     {
-        return array_merge(
-            parent::behaviors(),
-            [
-                'verbs' => [
-                    'class' => VerbFilter::className(),
-                    'actions' => [
-                        'delete' => ['POST'],
-                    ],
-                ],
-            ]
-        );
+        $behaviors = parent::behaviors();
+
+        $behaviors['access']['except'] = ['show'];
+        $behaviors['verbs']['class'] = VerbFilter::className();
+        $behaviors['verbs']['actions']['delete'] = ['POST'];
+
+        return $behaviors;
     }
 
     /**
@@ -98,6 +101,7 @@ class DefaultController extends Controller
      */
     public function actionShow($id)
     {
+
         $model = $this->findModel($id);
         if ($model->access != Content::ACCESS['public'] && !\Yii::$app->user->can('contentWebDefaultShow', ['model' => $this->findModel($id)])) {
             throw new \yii\web\ForbiddenHttpException(Module::t('You are not allowed to access this page.'));
@@ -106,6 +110,7 @@ class DefaultController extends Controller
         if ($model && $model->layout != 'null') {
             $this->layout = '@portalium/theme/layouts/' . $model->layout;
         }
+
         return $this->render('show', [
             'model' => $model,
         ]);
