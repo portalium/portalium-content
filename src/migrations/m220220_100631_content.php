@@ -23,7 +23,7 @@ class m220220_100631_content extends Migration
                 'id_content'=> $this->primaryKey(),
                 'name'=> $this->string(255)->notNull(),
                 'title'=> $this->text()->notNull(),
-                'body'=> $this->text()->null()->defaultValue(null),
+                'body'=> $this->getDb()->getSchema()->createColumnSchemaBuilder('longtext')->null()->defaultValue(null),
                 'id_user'=> $this->integer(11)->notNull(),
                 'id_category'=> $this->integer(11)->notNull(),
                 'status'=> $this->smallInteger(6)->notNull(),
