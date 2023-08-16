@@ -5,6 +5,7 @@ namespace portalium\content\models;
 use Yii;
 use yii\behaviors\TimestampBehavior;
 use portalium\content\Module;
+use portalium\user\models\User;
 use yii\helpers\ArrayHelper;
 /**
  * This is the model class for table "{{%content}}".
@@ -121,5 +122,10 @@ class Content extends \yii\db\ActiveRecord
     public function getCategory()
     {
         return $this->hasMany(Category::class, ['id_category' => 'id_category']);
+    }
+
+    public function getUser()
+    {
+        return $this->hasOne(User::class, ['id_user' => 'id_user']);
     }
 }
