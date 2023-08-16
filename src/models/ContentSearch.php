@@ -5,12 +5,15 @@ namespace portalium\content\models;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use portalium\content\models\Content;
+use portalium\user\Module;
 
 /**
  * ContentSearch represents the model behind the search form of `portalium\content\models\Content`.
  */
 class ContentSearch extends Content
 {
+    public $username;
+
     /**
      * {@inheritdoc}
      */
@@ -18,7 +21,7 @@ class ContentSearch extends Content
     {
         return [
             [['id_content', 'id_user', 'id_category', 'status'], 'integer'],
-            [['name', 'title', 'body', 'date_create', 'date_update'], 'safe'],
+            [['name', 'title', 'body', 'date_create', 'date_update', 'username'], 'safe'],
         ];
     }
 
@@ -43,10 +46,18 @@ class ContentSearch extends Content
         $query = Content::find();
 
         // add conditions that should always apply here
+        $query->joinWith(['user']);
+
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
         ]);
+
+        $dataProvider->sort->attributes['username'] = [
+            'asc' => ['user.username' => SORT_ASC],
+            'desc' => ['user.username' => SORT_DESC],
+        ];
+
 
         $this->load($params);
 
@@ -68,7 +79,8 @@ class ContentSearch extends Content
 
         $query->andFilterWhere(['like', 'name', $this->name])
             ->andFilterWhere(['like', 'title', $this->title])
-            ->andFilterWhere(['like', 'body', $this->body]);
+            ->andFilterWhere(['like', 'body', $this->body])
+            ->andFilterWhere(['like', Module::$tablePrefix . 'user.username', $this->username]);
 
         return $dataProvider;
     }
