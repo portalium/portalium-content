@@ -10,7 +10,7 @@ use portalium\theme\widgets\ActionColumn;
 /* @var $searchModel portalium\content\models\CategorySearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Module::t('Categories');
+$this->title = Yii::$app->setting->getValue('app::title') . Module::t('Categories');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="category-index">

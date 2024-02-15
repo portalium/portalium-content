@@ -75,11 +75,11 @@ class Category extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id_category' => 'Id Category',
-            'name' => 'Name',
-            'slug' => 'Slug',
-            'date_create' => 'Date Create',
-            'date_update' => 'Date Update',
+            'id_category' => Module::t('Id Category'),
+            'name' => Module::t('Name'),
+            'slug' => Module::t('Slug'),
+            'date_create' => Module::t('Date Create'),
+            'date_update' => Module::t('Date Update'),
         ];
     }
 
