@@ -33,7 +33,17 @@ class Module extends \portalium\base\Module
                     'class' => 'portalium\content\models\Content',
                     'route' => '/content/default/show',
                     'field' => ['id' => 'id_content', 'name' => 'title'],
-                ]
+                ],
+                [
+                    'menu' => 'web',
+                    'type' => 'action',
+                    'route' => '/content/default/index',
+                ],
+                [
+                    'menu' => 'web',
+                    'type' => 'action',
+                    'route' => '/content/category/index',
+                ],
             ],
         ];
         return $menuItems;

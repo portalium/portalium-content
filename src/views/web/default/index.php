@@ -18,7 +18,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php Panel::begin([
         'title' => Module::t('Contents'),
         'actions' => [
-            Html::a(Module::t(''), ['create'], ['class' => 'btn btn-success fa fa-plus'])
+            Html::a('', ['create'], ['class' => 'fa fa-plus btn btn-success'])
         ]
     ]) ?>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -34,7 +34,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'title:ntext',
             [
                 'attribute' => 'username',
-                'value' => 'user.username'
+                'value' => 'user.username',
+                'label' => 'User'
             ],
             //'id_user',
             //'id_category',
