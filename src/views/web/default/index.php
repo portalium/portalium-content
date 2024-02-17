@@ -44,6 +44,7 @@ $this->params['breadcrumbs'][] = $this->title;
             //'date_update',
             ['class' => ActionColumn::class],
         ],
+        'layout' => '{items}{summary}{pagesizer}{pager}',
     ]); Panel::end()?>
 
 </div>
