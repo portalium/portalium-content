@@ -3,7 +3,7 @@
 namespace portalium\content\models;
 
 use yii\base\Model;
-use yii\data\ActiveDataProvider;
+use portalium\data\ActiveDataProvider;
 use portalium\content\models\Content;
 use portalium\user\Module;
 
