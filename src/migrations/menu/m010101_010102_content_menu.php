@@ -35,8 +35,8 @@ class m010101_010102_content_menu extends Migration
         $id_item = MenuItem::find()->where(['slug' => 'site'])->one()->id_item;
 
         $this->batchInsert('menu_item', ['id_item', 'label', 'slug', 'type', 'style', 'data', 'sort', 'id_menu', 'name_auth', 'id_user', 'date_create', 'date_update'], [
-            [NULL, 'Categories', 'category', '1', '{"icon":"","color":"","iconSize":"","display":false,"childDisplay":false}', '{"data":{"route":"\\/content\\/category","module":null}}', '5', $id_menu, 'contentWebCategoryIndex', 1, '2022-06-13 15:32:26', '2022-06-13 15:32:26'],
-            [NULL, 'Contents', 'contents', '1', '{"icon":"","color":"","iconSize":"","display":false,"childDisplay":false}', '{"data":{"route":"\\/content","module":null}}', '4', $id_menu, 'contentWebDefaultIndex', 1, '2022-06-13 15:32:26', '2022-06-13 15:32:26'],
+            [NULL, 'Categories', 'category', '1', '{"icon":"","color":"","iconSize":"","display":"","childDisplay":false}', '{"data":{"route":"\\/content\\/category","module":null}}', '5', $id_menu, 'contentWebCategoryIndex', 1, '2022-06-13 15:32:26', '2022-06-13 15:32:26'],
+            [NULL, 'Contents', 'contents', '1', '{"icon":"","color":"","iconSize":"","display":"","childDisplay":false}', '{"data":{"route":"\\/content","module":null}}', '4', $id_menu, 'contentWebDefaultIndex', 1, '2022-06-13 15:32:26', '2022-06-13 15:32:26'],
         ]);
 
         $ids = $this->db->createCommand('SELECT id_item FROM menu_item WHERE slug in (\'category\', \'contents\')')->queryColumn();
