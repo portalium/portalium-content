@@ -63,6 +63,6 @@ class Module extends \portalium\base\Module
 
     public function registerEvents()
     {
-        Event::on($this::className(), UserModule::EVENT_USER_DELETE_BEFORE, [new TriggerActions(), 'onUserDeleteBefore']);
+        // Event::on($this::className(), UserModule::EVENT_USER_DELETE_BEFORE, [new TriggerActions(), 'onUserDeleteBefore']);
     }
 }
