@@ -5,6 +5,9 @@ namespace portalium\content\models;
 use Yii;
 use portalium\content\Module;
 use yii\behaviors\TimestampBehavior;
+use yii\db\ActiveRecord;
+use yii\web\ForbiddenHttpException;
+
 /**
  * This is the model class for table "{{%content_category}}".
  *
@@ -87,4 +90,15 @@ class Category extends \yii\db\ActiveRecord
     {
         return $this->hasMany(Content::className(), ['id_category' => 'id_category']);
     }
+
+    public function beforeDelete()
+    {
+        if ($this->getContents()->exists()) {
+            Yii::$app->session->setFlash('error', 'There are contents assigned to this category and therefore cannot be deleted.');
+            return false;
+        }
+
+        return parent::beforeDelete();
+    }
+
 }

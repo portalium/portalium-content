@@ -2,6 +2,7 @@
 
 namespace portalium\content\controllers\web;
 
+use portalium\content\models\Category;
 use Yii;
 use portalium\content\models\Content;
 use portalium\content\models\ContentSearch;
@@ -123,9 +124,16 @@ class DefaultController extends Controller
      */
     public function actionCreate()
     {
+        if (Category::find()->count() == 0) {
+
+            Yii::$app->session->setFlash('error', Module::t('You must create at least one category before creating content.'));
+            return $this->redirect(['category/create']);
+        }
+
         if (!\Yii::$app->user->can('contentWebDefaultCreate')) {
             throw new \yii\web\ForbiddenHttpException(Module::t('You are not allowed to access this page.'));
         }
+
         $model = new Content();
 
         if ($this->request->isPost) {
@@ -136,7 +144,6 @@ class DefaultController extends Controller
         } else {
             $model->loadDefaultValues();
         }
-
 
         return $this->render('create', [
             'model' => $model,
