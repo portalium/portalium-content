@@ -5,6 +5,8 @@ namespace portalium\content\models;
 use Yii;
 use portalium\content\Module;
 use yii\behaviors\TimestampBehavior;
+use yii\db\ActiveRecord;
+use yii\web\ForbiddenHttpException;
 
 /**
  * This is the model class for table "{{%content_category}}".
