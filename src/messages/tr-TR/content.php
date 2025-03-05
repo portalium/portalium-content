@@ -7,7 +7,7 @@ return [
     'Create Category' => 'Kategori Oluştur',
     'Categories' => 'Kategoriler',
     'Delete' => 'Sil',
-    'Reset' => 'Sıfırla', 
+    'Reset' => 'Sıfırla',
     'Are you sure you want to delete this item?' => 'Bu öğeyi silmek istediğinizden emin misiniz?',
     'Passive' => 'Pasif',
     'Active' => 'Aktif',
@@ -36,4 +36,8 @@ return [
     'Slug' => 'Kısa Ad',
     'Date Create' => 'Oluşturma Tarihi',
     'Date Update' => 'Güncelleme Tarihi',
+    'Actions' => 'Eylemler',
+    'Create' => 'Oluştur',
+    'You must create at least one category before creating content.' => 'İçerik oluşturmaya başlamadan önce en az bir kategori oluşturmanız gerekmektedir.'
+
 ];

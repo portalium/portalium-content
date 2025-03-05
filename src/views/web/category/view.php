@@ -16,13 +16,13 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php Panel::begin([
         'title' => $this->title,
         'actions' => [
-            Html::a(Module::t(''), ['update', 'id' => $model->id_category], ['class' => 'btn btn-primary fa fa-pencil']),
-            Html::a(Module::t(''), ['delete', 'id' => $model->id_category], [
+            Html::a('', ['update', 'id' => $model->id_category], ['class' => 'btn btn-primary fa fa-pencil', 'title' => Module::t('Update')]),
+            Html::a('', ['delete', 'id' => $model->id_category], [
                 'class' => 'btn btn-danger fa fa-trash',
                 'data' => [
                     'confirm' => Module::t('Are you sure you want to delete this item?'),
                     'method' => 'post',
-                ],
+                ], 'title' => Module::t('Delete'),
             ])
         ]
     ]) ?>
