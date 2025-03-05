@@ -18,7 +18,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php Panel::begin([
         'title' => $this->title,
         'actions' => [
-            Html::a(Module::t(''), ['create'], ['class' => 'fa fa-plus btn btn-success'])
+            Html::a('', ['create'], ['class' => 'fa fa-plus btn btn-success', 'title' => Module::t('Create')])
         ]
     ]) ?>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -33,7 +33,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'slug',
             'date_create',
             'date_update',
-            ['class' => ActionColumn::class],
+            ['class' => ActionColumn::class, 'header' => Module::t('Actions')],
         ],
         'layout' => '{items}{summary}{pagesizer}{pager}',
     ]); Panel::end() ?>
