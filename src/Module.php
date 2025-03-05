@@ -5,7 +5,7 @@ namespace portalium\content;
 use portalium\base\Event;
 use portalium\site\widgets\LoginButton;
 use portalium\user\Module as UserModule;
-use portalium\content\components\TriggerActions;
+use portalium\content\components\TriggerActions;ssssssss
 
 class Module extends \portalium\base\Module
 {
