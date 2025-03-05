@@ -7,11 +7,7 @@ use portalium\user\Module as UserModule;
 class m220220_100716_content_category extends Migration
 {
 
-    public function init()
-    {
-        $this->db = 'db';
-        parent::init();
-    }
+    
 
     public function safeUp()
     {
